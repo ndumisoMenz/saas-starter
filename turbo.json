@@ -1,35 +1,17 @@
 {
-  "$schema": "https://turbo.build/schema.json",
+  "$schema": "https://turborepo.dev/schema.json",
   "ui": "tui",
-  "globalEnv": ["NODE_ENV", "NEXT_PUBLIC_API_URL"],
   "tasks": {
-    "generate": {
-      "dependsOn": ["^generate"],
-      "inputs": ["../../packages/database/prisma/schema.prisma"],
-      "cache": true,
-      "env": ["DATABASE_URL", "DIRECT_URL"]
-    },
     "build": {
-      "dependsOn": ["^build", "generate"],
+      "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
-      "env": [
-        "NODE_ENV",
-        "DATABASE_URL",
-        "DIRECT_URL",
-        "AWS_ACCESS_KEY_ID",
-        "AWS_SECRET_ACCESS_KEY",
-        "AWS_REGION",
-        "AWS_BUCKET_NAME",
-        "NEXT_PUBLIC_API_URL"
-      ]
+      "outputs": [".next/**", "!.next/cache/**"]
     },
     "lint": {
       "dependsOn": ["^lint"]
     },
-    "type-check": {
-      "dependsOn": ["build"],
-      "cache": true
+    "check-types": {
+      "dependsOn": ["^check-types"]
     },
     "dev": {
       "cache": false,
