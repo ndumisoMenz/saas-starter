@@ -19,7 +19,8 @@ app.use(morgan(isProduction ? "combined" : "dev"));
 const allowedOrigins = [
   "http://localhost:3000",
   "http://localhost:3001",
-  "https://your-vercel-app.vercel.app", // ← update after Vercel setup
+  "https://saas-starter-web-43zs-git-main-ndumisomenzs-projects.vercel.app",
+  "https://saas-starter-web-43zs-52kn1v55u-ndumisomenzs-projects.vercel.app"
 ];
 
 app.use(
